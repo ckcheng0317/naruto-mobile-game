@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首頁 - 忍豆風雲</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            color: white;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .glow {
+            box-shadow: 0 0 20px rgba(66, 153, 225, 0.5);
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            padding: 15px;
+        }
+        .character-card {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .character-card:hover {
+            transform: translateY(-5px);
+        }
+        .shine-effect {
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
+            background: linear-gradient(
+                to right,
+                rgba(255,255,255,0) 0%,
+                rgba(255,255,255,0.2) 50%,
+                rgba(255,255,255,0) 100%
+            );
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+    </style>
+</head>
+<body class="h-screen">
+    <div class="p-4">
+        <!-- 頂部用戶信息 -->
+        <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center">
+                <div class="w-12 h-12 rounded-full overflow-hidden glow">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2" alt="用戶頭像" class="w-full h-full object-cover">
+                </div>
+                <div class="ml-3">
+                    <h2 class="text-lg font-bold">火影忍者</h2>
+                    <p class="text-sm text-gray-300">等級 25</p>
+                </div>
+            </div>
+            <div class="flex items-center">
+                <div class="glass-card px-3 py-1 mr-2">
+                    <i class="fas fa-coins text-yellow-400"></i>
+                    <span class="ml-1">1,234</span>
+                </div>
+                <div class="glass-card px-3 py-1">
+                    <i class="fas fa-gem text-blue-400"></i>
+                    <span class="ml-1">89</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 活動橫幅 -->
+        <div class="glass-card mb-6 relative overflow-hidden">
+            <div class="shine-effect"></div>
+            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96" 
+                 alt="活動橫幅" 
+                 class="w-full h-40 object-cover">
+            <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70">
+                <h3 class="text-xl font-bold">新春特別活動</h3>
+                <p class="text-sm">參與活動獲得限定忍者！</p>
+            </div>
+        </div>
+
+        <!-- Bento Grid 功能區 -->
+        <div class="bento-grid">
+            <div class="glass-card p-4 aspect-square character-card">
+                <i class="fas fa-scroll text-3xl text-orange-400"></i>
+                <h4 class="mt-2 font-bold">每日任務</h4>
+                <p class="text-sm text-gray-300">完成度: 4/6</p>
+            </div>
+            <div class="glass-card p-4 aspect-square character-card">
+                <i class="fas fa-users text-3xl text-blue-400"></i>
+                <h4 class="mt-2 font-bold">組隊對戰</h4>
+                <p class="text-sm text-gray-300">5場比賽可用</p>
+            </div>
+            <div class="glass-card p-4 aspect-square character-card">
+                <i class="fas fa-star text-3xl text-yellow-400"></i>
+                <h4 class="mt-2 font-bold">忍者培養</h4>
+                <p class="text-sm text-gray-300">可升級角色</p>
+            </div>
+            <div class="glass-card p-4 aspect-square character-card">
+                <i class="fas fa-gift text-3xl text-purple-400"></i>
+                <h4 class="mt-2 font-bold">限時獎勵</h4>
+                <p class="text-sm text-gray-300">2小時後更新</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
