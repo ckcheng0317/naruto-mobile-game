@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>忍豆風雲</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --device-width: 390px;
+            --device-height: 844px;
+        }
+        body {
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .device-frame {
+            width: var(--device-width);
+            height: var(--device-height);
+            background: white;
+            border-radius: 50px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 0 40px rgba(0,0,0,0.1);
+        }
+        .status-bar {
+            height: 44px;
+            background: #000;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            color: white;
+            font-size: 14px;
+        }
+        .notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 160px;
+            height: 30px;
+            background: #000;
+            border-bottom-left-radius: 24px;
+            border-bottom-right-radius: 24px;
+        }
+        .content-area {
+            height: calc(100% - 44px - 83px);
+            overflow: hidden;
+        }
+        .content-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .tab-bar {
+            height: 83px;
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid #e5e5e5;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding-bottom: 20px;
+        }
+        .tab-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #8e8e93;
+            font-size: 10px;
+            padding: 5px;
+        }
+        .tab-item.active {
+            color: #007AFF;
+        }
+        .tab-item i {
+            font-size: 24px;
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="device-frame">
+        <div class="status-bar">
+            <div class="notch"></div>
+            <div class="time">9:41</div>
+            <div class="status-icons">
+                <i class="fas fa-signal"></i>
+                <i class="fas fa-wifi ml-2"></i>
+                <i class="fas fa-battery-full ml-2"></i>
+            </div>
+        </div>
+        <div class="content-area">
+            <iframe src="pages/home.html" class="content-frame" id="mainContent"></iframe>
+        </div>
+        <div class="tab-bar">
+            <a class="tab-item active" onclick="navigate('home')">
+                <i class="fas fa-home"></i>
+                <span>首頁</span>
+            </a>
+            <a class="tab-item" onclick="navigate('battle')">
+                <i class="fas fa-gamepad"></i>
+                <span>戰鬥</span>
+            </a>
+            <a class="tab-item" onclick="navigate('character')">
+                <i class="fas fa-user-ninja"></i>
+                <span>角色</span>
+            </a>
+            <a class="tab-item" onclick="navigate('social')">
+                <i class="fas fa-users"></i>
+                <span>社交</span>
+            </a>
+            <a class="tab-item" onclick="navigate('shop')">
+                <i class="fas fa-store"></i>
+                <span>商城</span>
+            </a>
+        </div>
+    </div>
+    <script>
+        function navigate(page) {
+            document.getElementById('mainContent').src = `pages/${page}.html`;
+            document.querySelectorAll('.tab-item').forEach(item => item.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
