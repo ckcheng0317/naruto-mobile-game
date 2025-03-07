@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商城 - 忍豆風雲</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .item-card {
+            position: relative;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        .item-card:hover {
+            transform: translateY(-5px);
+        }
+        .item-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transition: 0.5s;
+        }
+        .item-card:hover::after {
+            left: 100%;
+        }
+        .discount-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff4757;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .timer {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 4px 8px;
+            font-size: 12px;
+            display: inline-flex;
+            align-items: center;
+        }
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px #ffd700; }
+            50% { box-shadow: 0 0 20px #ffd700; }
+            100% { box-shadow: 0 0 5px #ffd700; }
+        }
+        .premium {
+            animation: glow 2s infinite;
+        }
+    </style>
+</head>
+<body class="h-screen">
+    <div class="p-4">
+        <!-- 頂部餘額 -->
+        <div class="flex justify-between items-center mb-6">
+            <div class="glass-card px-4 py-2 flex items-center">
+                <i class="fas fa-coins text-yellow-400 mr-2"></i>
+                <span>1,234</span>
+            </div>
+            <div class="glass-card px-4 py-2 flex items-center">
+                <i class="fas fa-gem text-blue-400 mr-2"></i>
+                <span>89</span>
+            </div>
+        </div>
+
+        <!-- 限時特惠 -->
+        <div class="glass-card p-4 mb-6 premium">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-bold">限時特惠</h3>
+                <div class="timer">
+                    <i class="fas fa-clock mr-2"></i>
+                    23:45:12
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="item-card glass-card p-3 relative">
+                    <div class="discount-badge">-30%</div>
+                    <img src="https://images.unsplash.com/photo-1542931287-023b922fa89b" 
+                         alt="特惠物品" 
+                         class="w-full h-24 object-cover rounded-lg mb-2">
+                    <h4 class="font-bold text-sm">忍術卷軸</h4>
+                    <div class="flex justify-between items-center mt-2">
+                        <div class="flex items-center">
+                            <i class="fas fa-gem text-blue-400 text-sm mr-1"></i>
+                            <span class="text-sm">100</span>
+                        </div>
+                        <button class="bg-blue-500 px-3 py-1 rounded-full text-xs">
+                            購買
+                        </button>
+                    </div>
+                </div>
+                <div class="item-card glass-card p-3 relative">
+                    <div class="discount-badge">-50%</div>
+                    <img src="https://images.unsplash.com/photo-1542931421-7d518e5c1d0f" 
+                         alt="特惠物品" 
+                         class="w-full h-24 object-cover rounded-lg mb-2">
+                    <h4 class="font-bold text-sm">查克拉藥水</h4>
+                    <div class="flex justify-between items-center mt-2">
+                        <div class="flex items-center">
+                            <i class="fas fa-coins text-yellow-400 text-sm mr-1"></i>
+                            <span class="text-sm">500</span>
+                        </div>
+                        <button class="bg-blue-500 px-3 py-1 rounded-full text-xs">
+                            購買
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 商品分類 -->
+        <div class="flex space-x-2 mb-6 overflow-x-auto">
+            <button class="glass-card px-4 py-2 whitespace-nowrap bg-blue-500/20">
+                全部
+            </button>
+            <button class="glass-card px-4 py-2 whitespace-nowrap">
+                忍具
+            </button>
+            <button class="glass-card px-4 py-2 whitespace-nowrap">
+                卷軸
+            </button>
+            <button class="glass-card px-4 py-2 whitespace-nowrap">
+                藥品
+            </button>
+            <button class="glass-card px-4 py-2 whitespace-nowrap">
+                裝備
+            </button>
+        </div>
+
+        <!-- 商品列表 -->
+        <div class="grid grid-cols-2 gap-4">
+            <div class="item-card glass-card p-3">
+                <img src="https://images.unsplash.com/photo-1542931287-023b922fa89b" 
+                     alt="商品" 
+                     class="w-full h-24 object-cover rounded-lg mb-2">
+                <h4 class="font-bold text-sm">手裡劍</h4>
+                <div class="flex justify-between items-center mt-2">
+                    <div class="flex items-center">
+                        <i class="fas fa-coins text-yellow-400 text-sm mr-1"></i>
+                        <span class="text-sm">300</span>
+                    </div>
+                    <button class="bg-blue-500 px-3 py-1 rounded-full text-xs">
+                        購買
+                    </button>
+                </div>
+            </div>
+
+            <div class="item-card glass-card p-3">
+                <img src="https://images.unsplash.com/photo-1542931421-7d518e5c1d0f" 
+                     alt="商品" 
+                     class="w-full h-24 object-cover rounded-lg mb-2">
+                <h4 class="font-bold text-sm">苦無</h4>
+                <div class="flex justify-between items-center mt-2">
+                    <div class="flex items-center">
+                        <i class="fas fa-coins text-yellow-400 text-sm mr-1"></i>
+                        <span class="text-sm">200</span>
+                    </div>
+                    <button class="bg-blue-500 px-3 py-1 rounded-full text-xs">
+                        購買
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
