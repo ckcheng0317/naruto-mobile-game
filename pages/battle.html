@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>戰鬥 - 忍豆風雲</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #2a1f3d, #1a1a2e);
+            color: white;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .battle-card {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .battle-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.4);
+        }
+        .energy-bar {
+            height: 4px;
+            background: linear-gradient(to right, #4CAF50, #8BC34A);
+            border-radius: 2px;
+        }
+        .glow-effect {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(138, 43, 226, 0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body class="h-screen">
+    <div class="p-4">
+        <!-- 戰鬥模式選擇 -->
+        <div class="flex space-x-4 mb-6">
+            <button class="glass-card flex-1 py-3 px-4 active:scale-95 transition-transform">
+                <i class="fas fa-user-ninja text-purple-400 text-xl mb-2"></i>
+                <div class="text-sm">單人戰鬥</div>
+            </button>
+            <button class="glass-card flex-1 py-3 px-4 active:scale-95 transition-transform">
+                <i class="fas fa-users text-blue-400 text-xl mb-2"></i>
+                <div class="text-sm">組隊戰鬥</div>
+            </button>
+            <button class="glass-card flex-1 py-3 px-4 active:scale-95 transition-transform">
+                <i class="fas fa-trophy text-yellow-400 text-xl mb-2"></i>
+                <div class="text-sm">排位賽</div>
+            </button>
+        </div>
+
+        <!-- 快速匹配 -->
+        <div class="glass-card p-4 mb-6 relative overflow-hidden pulse">
+            <div class="glow-effect"></div>
+            <div class="flex items-center justify-between">
+                <div>
+                    <h3 class="text-lg font-bold mb-1">快速匹配</h3>
+                    <p class="text-sm text-gray-300">在線玩家：1,234</p>
+                </div>
+                <button class="bg-purple-600 px-6 py-2 rounded-full text-white font-semibold hover:bg-purple-700 transition-colors">
+                    開始
+                </button>
+            </div>
+        </div>
+
+        <!-- 推薦對戰 -->
+        <h3 class="text-lg font-bold mb-4">推薦對戰</h3>
+        <div class="space-y-4">
+            <div class="battle-card glass-card p-4">
+                <div class="flex justify-between items-center mb-3">
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb" alt="玩家頭像" class="w-10 h-10 rounded-full">
+                        <div class="ml-3">
+                            <div class="font-bold">影月</div>
+                            <div class="text-sm text-gray-300">等級 28</div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-sm text-gray-300">勝率</div>
+                        <div class="font-bold text-green-400">76%</div>
+                    </div>
+                </div>
+                <div class="energy-bar w-3/4 mb-2"></div>
+            </div>
+
+            <div class="battle-card glass-card p-4">
+                <div class="flex justify-between items-center mb-3">
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6" alt="玩家頭像" class="w-10 h-10 rounded-full">
+                        <div class="ml-3">
+                            <div class="font-bold">火影</div>
+                            <div class="text-sm text-gray-300">等級 31</div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-sm text-gray-300">勝率</div>
+                        <div class="font-bold text-green-400">82%</div>
+                    </div>
+                </div>
+                <div class="energy-bar w-4/5 mb-2"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
