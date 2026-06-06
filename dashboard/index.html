@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>$10K Mission Control</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;600&display=swap');
+    * { font-family: 'Inter', sans-serif; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .glow-orange { box-shadow: 0 0 20px rgba(249,115,22,0.3); }
+    .glow-green { box-shadow: 0 0 20px rgba(34,197,94,0.2); }
+    .progress-bar { transition: width 1s cubic-bezier(0.4, 0, 0.2, 1); }
+    .card { background: rgba(15,23,42,0.8); border: 1px solid rgba(255,255,255,0.08); }
+    .pulse-dot::before {
+      content: '';
+      display: inline-block;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      margin-right: 6px;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+    .agent-card { transition: all 0.2s; }
+    .agent-card:hover { transform: translateY(-2px); border-color: rgba(249,115,22,0.4); }
+    .streak-fire { animation: flicker 0.5s infinite alternate; }
+    @keyframes flicker { from { opacity: 0.8; } to { opacity: 1; } }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen">
+
+  <!-- Header -->
+  <header class="border-b border-slate-800 px-6 py-4">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center font-black text-sm">10K</div>
+        <div>
+          <h1 class="font-bold text-lg leading-none">Mission Control</h1>
+          <p class="text-slate-500 text-xs mono">$10K in 30 Days — Game UI Agency</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-4">
+        <span class="pulse-dot text-slate-400 text-sm">AI Agents Active</span>
+        <div id="current-date" class="mono text-xs text-slate-500"></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-8 space-y-8">
+
+    <!-- Revenue Hero -->
+    <div class="card rounded-2xl p-8 glow-orange">
+      <div class="flex items-start justify-between mb-6">
+        <div>
+          <p class="text-slate-400 text-sm uppercase tracking-wider mb-1">Total Revenue</p>
+          <div class="flex items-end gap-3">
+            <span id="current-revenue" class="text-6xl font-black text-white mono">$0</span>
+            <span class="text-slate-500 text-xl mb-2">/ $10,000</span>
+          </div>
+          <div class="flex items-center gap-4 mt-2">
+            <span id="revenue-pct" class="text-orange-400 font-bold text-lg mono">0%</span>
+            <span class="text-slate-500 text-sm">of goal</span>
+            <span class="text-slate-700">•</span>
+            <span id="pending-revenue" class="text-yellow-400 text-sm">$0 pending</span>
+          </div>
+        </div>
+        <div class="text-right">
+          <div id="days-remaining" class="text-5xl font-black text-orange-400 mono">30</div>
+          <div class="text-slate-400 text-sm">days left</div>
+          <div id="daily-need" class="text-xs text-slate-500 mt-1 mono">$334/day needed</div>
+        </div>
+      </div>
+      <div class="relative h-3 bg-slate-800 rounded-full overflow-hidden">
+        <div id="progress-bar" class="progress-bar h-full bg-gradient-to-r from-orange-500 to-orange-400 rounded-full" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <!-- Weekly Breakdown -->
+    <div class="grid grid-cols-4 gap-4">
+      <div id="week1-card" class="card rounded-xl p-5">
+        <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Week 1</p>
+        <p class="font-bold text-xl mono"><span id="week1-actual">$0</span><span class="text-slate-600 text-sm"> / $2,000</span></p>
+        <div class="mt-3 h-1.5 bg-slate-800 rounded-full overflow-hidden">
+          <div id="week1-bar" class="h-full bg-orange-500 rounded-full" style="width: 0%"></div>
+        </div>
+      </div>
+      <div id="week2-card" class="card rounded-xl p-5">
+        <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Week 2</p>
+        <p class="font-bold text-xl mono"><span id="week2-actual">$0</span><span class="text-slate-600 text-sm"> / $3,000</span></p>
+        <div class="mt-3 h-1.5 bg-slate-800 rounded-full overflow-hidden">
+          <div id="week2-bar" class="h-full bg-orange-500 rounded-full" style="width: 0%"></div>
+        </div>
+      </div>
+      <div id="week3-card" class="card rounded-xl p-5">
+        <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Week 3</p>
+        <p class="font-bold text-xl mono"><span id="week3-actual">$0</span><span class="text-slate-600 text-sm"> / $3,000</span></p>
+        <div class="mt-3 h-1.5 bg-slate-800 rounded-full overflow-hidden">
+          <div id="week3-bar" class="h-full bg-orange-500 rounded-full" style="width: 0%"></div>
+        </div>
+      </div>
+      <div id="week4-card" class="card rounded-xl p-5">
+        <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Week 4</p>
+        <p class="font-bold text-xl mono"><span id="week4-actual">$0</span><span class="text-slate-600 text-sm"> / $2,000</span></p>
+        <div class="mt-3 h-1.5 bg-slate-800 rounded-full overflow-hidden">
+          <div id="week4-bar" class="h-full bg-orange-500 rounded-full" style="width: 0%"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lead Pipeline + AI Agents -->
+    <div class="grid grid-cols-3 gap-6">
+      <!-- Lead Pipeline -->
+      <div class="col-span-2 card rounded-2xl p-6">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="font-semibold text-lg">Lead Pipeline</h2>
+          <button onclick="runAgent('leads')" class="text-xs bg-orange-500/10 hover:bg-orange-500/20 text-orange-400 border border-orange-500/20 px-3 py-1.5 rounded-lg transition-colors">
+            + Generate Leads
+          </button>
+        </div>
+        <div class="grid grid-cols-4 gap-3 mb-6">
+          <div class="bg-slate-800/50 rounded-xl p-4 text-center">
+            <div id="leads-generated" class="text-2xl font-bold mono text-white">0</div>
+            <div class="text-slate-500 text-xs mt-1">Generated</div>
+          </div>
+          <div class="bg-slate-800/50 rounded-xl p-4 text-center">
+            <div id="leads-contacted" class="text-2xl font-bold mono text-yellow-400">0</div>
+            <div class="text-slate-500 text-xs mt-1">Contacted</div>
+          </div>
+          <div class="bg-slate-800/50 rounded-xl p-4 text-center">
+            <div id="leads-replied" class="text-2xl font-bold mono text-blue-400">0</div>
+            <div class="text-slate-500 text-xs mt-1">Replied</div>
+          </div>
+          <div class="bg-slate-800/50 rounded-xl p-4 text-center">
+            <div id="leads-converted" class="text-2xl font-bold mono text-green-400">0</div>
+            <div class="text-slate-500 text-xs mt-1">Converted</div>
+          </div>
+        </div>
+        <div id="recent-leads" class="space-y-2">
+          <p class="text-slate-600 text-sm text-center py-4">No leads yet. Run the lead generator to start.</p>
+        </div>
+      </div>
+
+      <!-- AI Agents -->
+      <div class="card rounded-2xl p-6">
+        <h2 class="font-semibold text-lg mb-4">AI Agents</h2>
+        <div class="space-y-3">
+          <div class="agent-card card rounded-xl p-4 cursor-pointer" onclick="runAgent('leads')">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 bg-blue-500/10 rounded-lg flex items-center justify-center text-lg">🔍</div>
+              <div class="flex-1 min-w-0">
+                <p class="font-medium text-sm">Lead Generator</p>
+                <p class="text-slate-500 text-xs truncate">Finds indie dev clients</p>
+              </div>
+              <div id="agent-leads-status" class="w-2 h-2 rounded-full bg-slate-700"></div>
+            </div>
+          </div>
+          <div class="agent-card card rounded-xl p-4 cursor-pointer" onclick="runAgent('outreach')">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 bg-purple-500/10 rounded-lg flex items-center justify-center text-lg">✉️</div>
+              <div class="flex-1 min-w-0">
+                <p class="font-medium text-sm">Outreach Writer</p>
+                <p class="text-slate-500 text-xs truncate">Personalized messages</p>
+              </div>
+              <div id="agent-outreach-status" class="w-2 h-2 rounded-full bg-slate-700"></div>
+            </div>
+          </div>
+          <div class="agent-card card rounded-xl p-4 cursor-pointer" onclick="runAgent('proposal')">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 bg-green-500/10 rounded-lg flex items-center justify-center text-lg">📄</div>
+              <div class="flex-1 min-w-0">
+                <p class="font-medium text-sm">Proposal Builder</p>
+                <p class="text-slate-500 text-xs truncate">Winning project proposals</p>
+              </div>
+              <div id="agent-proposal-status" class="w-2 h-2 rounded-full bg-slate-700"></div>
+            </div>
+          </div>
+          <div class="agent-card card rounded-xl p-4 cursor-pointer" onclick="runAgent('content')">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 bg-orange-500/10 rounded-lg flex items-center justify-center text-lg">🎨</div>
+              <div class="flex-1 min-w-0">
+                <p class="font-medium text-sm">Content Creator</p>
+                <p class="text-slate-500 text-xs truncate">Social media & portfolio</p>
+              </div>
+              <div id="agent-content-status" class="w-2 h-2 rounded-full bg-slate-700"></div>
+            </div>
+          </div>
+          <div class="agent-card card rounded-xl p-4 cursor-pointer" onclick="runAgent('daily')">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 bg-red-500/10 rounded-lg flex items-center justify-center text-lg">🤖</div>
+              <div class="flex-1 min-w-0">
+                <p class="font-medium text-sm">Daily Orchestrator</p>
+                <p class="text-slate-500 text-xs truncate">Run all agents</p>
+              </div>
+              <div id="agent-daily-status" class="w-2 h-2 rounded-full bg-slate-700"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projects + Add Revenue -->
+    <div class="grid grid-cols-2 gap-6">
+      <!-- Active Projects -->
+      <div class="card rounded-2xl p-6">
+        <h2 class="font-semibold text-lg mb-4">Projects</h2>
+        <div class="grid grid-cols-3 gap-3 mb-4">
+          <div class="bg-slate-800/50 rounded-lg p-3 text-center">
+            <div id="proj-total" class="text-xl font-bold mono">0</div>
+            <div class="text-slate-500 text-xs">Total</div>
+          </div>
+          <div class="bg-slate-800/50 rounded-lg p-3 text-center">
+            <div id="proj-active" class="text-xl font-bold mono text-yellow-400">0</div>
+            <div class="text-slate-500 text-xs">Active</div>
+          </div>
+          <div class="bg-slate-800/50 rounded-lg p-3 text-center">
+            <div id="proj-completed" class="text-xl font-bold mono text-green-400">0</div>
+            <div class="text-slate-500 text-xs">Done</div>
+          </div>
+        </div>
+        <div id="recent-projects" class="space-y-2">
+          <p class="text-slate-600 text-sm text-center py-4">No projects yet.</p>
+        </div>
+      </div>
+
+      <!-- Add Revenue -->
+      <div class="card rounded-2xl p-6">
+        <h2 class="font-semibold text-lg mb-4">Record Payment</h2>
+        <form id="revenue-form" class="space-y-4" onsubmit="addRevenue(event)">
+          <div>
+            <label class="text-slate-400 text-xs uppercase tracking-wider block mb-2">Amount (USD)</label>
+            <div class="relative">
+              <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500">$</span>
+              <input type="number" id="rev-amount" min="1" step="0.01" required
+                class="w-full bg-slate-800 border border-slate-700 rounded-lg pl-7 pr-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-orange-500 mono"
+                placeholder="1299" />
+            </div>
+          </div>
+          <div>
+            <label class="text-slate-400 text-xs uppercase tracking-wider block mb-2">Client Name</label>
+            <input type="text" id="rev-client" required
+              class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-orange-500"
+              placeholder="ShadowByte Games" />
+          </div>
+          <div>
+            <label class="text-slate-400 text-xs uppercase tracking-wider block mb-2">Project Type</label>
+            <select id="rev-type"
+              class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-orange-500">
+              <option value="game_ui_basic">Basic Game UI (3-5 screens)</option>
+              <option value="game_ui_standard" selected>Standard Game UI (6-10 screens)</option>
+              <option value="game_ui_premium">Premium Game UI + animations</option>
+              <option value="prototype">HTML5 Prototype</option>
+              <option value="character_design">Character/Asset Design</option>
+            </select>
+          </div>
+          <div>
+            <label class="text-slate-400 text-xs uppercase tracking-wider block mb-2">Payment Type</label>
+            <div class="flex gap-2">
+              <label class="flex-1">
+                <input type="radio" name="payment-type" value="deposit" class="sr-only" />
+                <div class="border border-slate-700 rounded-lg px-3 py-2 text-center text-sm cursor-pointer payment-type-btn">Deposit (50%)</div>
+              </label>
+              <label class="flex-1">
+                <input type="radio" name="payment-type" value="final" class="sr-only" checked />
+                <div class="border border-orange-500/50 bg-orange-500/5 rounded-lg px-3 py-2 text-center text-sm cursor-pointer payment-type-btn">Final Payment</div>
+              </label>
+            </div>
+          </div>
+          <button type="submit"
+            class="w-full bg-orange-500 hover:bg-orange-400 text-white font-semibold py-3 rounded-lg transition-colors">
+            Record $<span id="rev-btn-amount">0</span> Payment
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Recent Transactions -->
+    <div class="card rounded-2xl p-6">
+      <h2 class="font-semibold text-lg mb-4">Transaction History</h2>
+      <div id="transactions" class="space-y-2">
+        <p class="text-slate-600 text-sm text-center py-4">No transactions yet. Start closing clients!</p>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="card rounded-2xl p-6">
+      <h2 class="font-semibold text-lg mb-4">Quick Actions</h2>
+      <div class="grid grid-cols-4 gap-3">
+        <a href="../index.html" target="_blank"
+          class="bg-slate-800 hover:bg-slate-700 rounded-xl p-4 text-center transition-colors">
+          <div class="text-2xl mb-2">🎮</div>
+          <div class="text-sm font-medium">View Portfolio</div>
+          <div class="text-slate-500 text-xs">Naruto game demo</div>
+        </a>
+        <button onclick="copyPortfolioLink()"
+          class="bg-slate-800 hover:bg-slate-700 rounded-xl p-4 text-center transition-colors">
+          <div class="text-2xl mb-2">🔗</div>
+          <div class="text-sm font-medium">Copy Portfolio Link</div>
+          <div class="text-slate-500 text-xs">Share with clients</div>
+        </button>
+        <button onclick="generateDailyReport()"
+          class="bg-slate-800 hover:bg-slate-700 rounded-xl p-4 text-center transition-colors">
+          <div class="text-2xl mb-2">📊</div>
+          <div class="text-sm font-medium">Daily Report</div>
+          <div class="text-slate-500 text-xs">AI analysis</div>
+        </button>
+        <button onclick="window.location.reload()"
+          class="bg-slate-800 hover:bg-slate-700 rounded-xl p-4 text-center transition-colors">
+          <div class="text-2xl mb-2">🔄</div>
+          <div class="text-sm font-medium">Refresh Data</div>
+          <div class="text-slate-500 text-xs">Reload dashboard</div>
+        </button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Toast notification -->
+  <div id="toast" class="fixed bottom-6 right-6 bg-green-500 text-white px-6 py-3 rounded-xl font-medium shadow-lg transform translate-y-20 opacity-0 transition-all duration-300"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "naruto-mobile-game-agency",
+  "version": "1.0.0",
+  "description": "AI-powered game development service agency — $10K in 30 days",
+  "main": "agents/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node agents/index.js",
+    "leads": "node agents/lead-generator.js",
+    "outreach": "node agents/outreach-generator.js",
+    "proposal": "node agents/proposal-generator.js",
+    "content": "node agents/content-creator.js",
+    "dashboard": "npx serve dashboard -p 3001",
+    "daily": "node agents/index.js --mode=daily"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.55.0",
+    "dotenv": "^16.4.5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

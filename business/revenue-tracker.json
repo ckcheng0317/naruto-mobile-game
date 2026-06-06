@@ -1,0 +1,22 @@
+{
+  "goal": 10000,
+  "currency": "USD",
+  "deadline": "30 days",
+  "startDate": null,
+  "currentRevenue": 0,
+  "pendingRevenue": 0,
+  "transactions": [],
+  "weeklyBreakdown": {
+    "week1": { "target": 2000, "actual": 0 },
+    "week2": { "target": 3000, "actual": 0 },
+    "week3": { "target": 3000, "actual": 0 },
+    "week4": { "target": 2000, "actual": 0 }
+  },
+  "serviceRates": {
+    "game_ui_basic": { "min": 500, "max": 1000, "description": "Basic mobile game UI (3-5 screens)" },
+    "game_ui_standard": { "min": 1000, "max": 2000, "description": "Standard mobile game UI (6-10 screens)" },
+    "game_ui_premium": { "min": 2000, "max": 3000, "description": "Premium mobile game UI with animations" },
+    "prototype": { "min": 800, "max": 1500, "description": "Playable HTML5 prototype" },
+    "character_design": { "min": 300, "max": 800, "description": "AI-assisted character/asset design" }
+  }
+}
