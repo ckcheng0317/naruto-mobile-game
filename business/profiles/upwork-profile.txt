@@ -1,0 +1,108 @@
+====================================================
+UPWORK PROFILE — GAME UI DEVELOPER
+====================================================
+
+TITLE:
+Mobile Game UI Developer | Anime & Fantasy Style | 72-Hour Delivery
+
+OVERVIEW (copy-paste into Upwork "Professional Overview"):
+----------------------------------------------------
+I build mobile game UIs that make players stop scrolling and start playing.
+
+Specializing in anime, fantasy, and action RPG game interfaces — the kind with satisfying battle HUDs, smooth character select screens, and gacha systems that feel premium. I recently built a complete Naruto-inspired mobile game UI (character select, battle HUD, social hub, shop) in under 3 days as a portfolio demo.
+
+What I deliver:
+• Pixel-perfect HTML5/CSS3/JavaScript UI — works in any mobile game engine wrapper
+• Full source files, yours on final payment
+• Fast: basic packages in 72 hours, standard in 5-7 days
+• AI-assisted workflow means more screens, faster, at lower cost
+
+My process is simple: you tell me your game's vibe, I mock up the most important screen first, you approve, then I build the rest. No surprises.
+
+Portfolio: [YOUR GITHUB PAGES URL HERE]
+
+I take on 2-3 projects at a time so every client gets full attention. Currently available.
+
+SPECIALTIES:
+• Battle HUDs & combat UI
+• Character select & roster screens
+• Inventory & equipment systems
+• Gacha / shop interfaces
+• Social hubs & leaderboards
+• Mobile-first responsive design
+
+SKILLS TO ADD ON UPWORK:
+HTML5, CSS3, JavaScript, Mobile Game UI, Game Interface Design, UI/UX Design,
+Anime Art Style, Game HUD, Figma, Adobe XD
+
+HOURLY RATE SUGGESTION: $45-65/hr
+(But most clients prefer fixed-price packages — use the proposal template)
+
+====================================================
+FIVERR GIG SETUP
+====================================================
+
+GIG TITLE:
+I will design a stunning mobile game UI in HTML CSS for your indie game
+
+GIG DESCRIPTION:
+----------------------------------------------------
+Your game is ready. Your UI isn't.
+
+I build mobile game interfaces that look like they belong on the App Store — fast. Using an AI-assisted workflow, I deliver polished HTML5/CSS3/JS game UIs in 72 hours that would take a traditional designer 2 weeks.
+
+Perfect for:
+✅ Indie devs launching on mobile
+✅ Game jam projects that need polish
+✅ Kickstarter campaigns needing a demo
+✅ Unity/Unreal games using HTML wrappers
+✅ Anime, fantasy, action RPG aesthetics
+
+See my Naruto-inspired demo (character select + battle HUD + shop): [YOUR GITHUB PAGES URL]
+
+WHAT YOU GET:
+• Fully coded HTML/CSS/JavaScript (no static images)
+• Responsive, mobile-optimized
+• All source files
+• 1 round of revisions included
+
+I've built: battle HUDs, character select screens, inventory systems, gacha shops, social hubs, skill trees, loading screens, and more.
+
+Message me with a screenshot of your game and I'll tell you exactly which 3 screens would make the biggest impact.
+
+GIG PACKAGES:
+Basic — $499 — 3 screens, 72hr delivery, 1 revision
+Standard — $1,299 — 7 screens, 7-day delivery, 2 revisions
+Premium — $2,499 — 12 screens + animations, 14-day delivery, 3 revisions
+
+TAGS:
+mobile game ui, game interface design, html5 game, game hud, anime game ui,
+unity ui, game ux, mobile game design, indie game, rpg ui
+
+====================================================
+PORTFOLIO PLATFORMS TO REGISTER (Week 1 priority)
+====================================================
+
+1. Upwork — upwork.com/freelancers
+2. Fiverr — fiverr.com/selling
+3. itch.io — itch.io/developers (game dev community, very responsive)
+4. ArtStation — artstation.com (game dev industry standard)
+5. IndieDB — indiedb.com (post your portfolio game as a demo)
+
+====================================================
+DAILY PROSPECTING ROUTINE (30 mins/day)
+====================================================
+
+8:00am — Check r/gamedev "new" posts from last 12 hours
+         Search: "UI", "interface", "HUD", "feedback", "rate my"
+         Comment helpfully on 3 posts
+
+8:15am — Check Twitter search: "#indiedev" + "UI" last 24h
+         Respond to 3 developers with genuine observations
+
+8:25am — Apply to 2 Upwork/Fiverr job posts (use T004 template)
+
+8:30am — Post today's social content (use content calendar)
+
+Track everything in dashboard/index.html
+====================================================

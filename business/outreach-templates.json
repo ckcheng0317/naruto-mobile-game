@@ -1,0 +1,80 @@
+{
+  "lastUpdated": "2026-06-08",
+  "portfolioUrl": "https://ckcheng0317.github.io/naruto-mobile-game/",
+  "templates": [
+    {
+      "id": "T001",
+      "platform": "Reddit (r/gamedev, r/indiegaming)",
+      "scenario": "Someone posted their game and mentioned UI struggles",
+      "subject": null,
+      "message": "hey, your game concept is really solid. the core loop you described sounds fun\n\ni built a naruto-style mobile game UI recently as a portfolio piece — character select, battle HUD, gacha shop, the works. took about 3 days with AI-assisted workflow\n\nif you ever want to see what polished UI would look like for your game, happy to mock up one screen for free so you can decide if it fits your vision\n\nno pitch, just genuinely curious about your game",
+      "callToAction": "offer a free 1-screen mockup",
+      "tone": "casual, developer-to-developer",
+      "notes": "Reply to their post, don't DM cold first"
+    },
+    {
+      "id": "T002",
+      "platform": "Twitter/X",
+      "scenario": "Indie dev tweeted about struggling with UI or needing a designer",
+      "subject": null,
+      "message": "your game looks fun — the UI is the one thing holding it back from a killer demo reel\n\ni do game UI fast (built a full naruto mobile UI in 72h): [PORTFOLIO_URL]\n\nwhat's your timeline looking like?",
+      "callToAction": "ask about timeline to gauge urgency",
+      "tone": "direct, confident, brief",
+      "notes": "Under 280 chars. Always reply to a specific tweet they made, not a cold DM"
+    },
+    {
+      "id": "T003",
+      "platform": "Discord (gamedev servers)",
+      "scenario": "Dev shared WIP screenshots with placeholder UI",
+      "subject": null,
+      "message": "your gameplay looks really solid honestly\n\nrandom question — are you planning to redo the UI before showing this to publishers? i've been doing game UI work (anime/fantasy style mainly) and built a full mobile game UI last week as a demo: [PORTFOLIO_URL]\n\nif you want i can take a quick look at your screenshots and suggest what would make the biggest difference",
+      "callToAction": "offer free UI audit",
+      "tone": "helpful, casual, non-pushy",
+      "notes": "Build rapport first, then offer value. Never pitch pricing in first message"
+    },
+    {
+      "id": "T004",
+      "platform": "Upwork / Fiverr (responding to job posts)",
+      "scenario": "Client posted a job for mobile game UI development",
+      "subject": "Game UI Developer — 72hr delivery, anime/RPG specialist",
+      "message": "Hi [NAME],\n\nI specialize in exactly what you're describing — mobile game UI for [GAME TYPE] games, delivered fast.\n\nRecent work: I built a complete Naruto-style mobile game UI (character select, battle HUD, social hub, gacha shop) as a portfolio piece. You can see it here: [PORTFOLIO_URL]\n\nFor your project, I'd suggest starting with a Quick Win package — I'll build your 3 most important screens in 72 hours for $499 so you can see the quality before committing to the full scope.\n\nTimeline: I can start within 24 hours of deposit.\nDelivery: All source files (HTML/CSS/JS), optimized for mobile.\n\nWhat aspect of the UI matters most to you — the visual style, the responsiveness, or the animation quality?\n\nBest,\n[YOUR NAME]",
+      "callToAction": "ask a qualifying question to start dialogue",
+      "tone": "professional but approachable",
+      "notes": "Always personalize [NAME] and [GAME TYPE]. The question at the end gets replies"
+    },
+    {
+      "id": "T005",
+      "platform": "Email (cold to indie studio)",
+      "scenario": "Found a studio with a game in development but rough UI",
+      "subject": "Quick UI idea for [GAME NAME]",
+      "message": "Hi [NAME],\n\nI came across [GAME NAME] on [WHERE YOU FOUND THEM] — the [SPECIFIC THING YOU LIKED] really caught my attention.\n\nI'm a game UI developer who's been building mobile interfaces for indie games, mostly anime and fantasy style. I put together a portfolio piece last week — a full Naruto-inspired mobile game UI — that shows what I can do: [PORTFOLIO_URL]\n\nI had one specific idea for [GAME NAME]'s [SPECIFIC SCREEN, e.g. 'battle HUD'] that I think would make a big difference. Worth a 15-minute call this week?\n\nEither way, great work on the game.\n\n[YOUR NAME]",
+      "callToAction": "15-minute call",
+      "tone": "professional, specific, shows you did research",
+      "notes": "The [SPECIFIC THING YOU LIKED] and [SPECIFIC SCREEN] are critical — generic emails get ignored"
+    }
+  ],
+  "followUpTemplates": {
+    "day3": "hey just following up — did you get a chance to check out the portfolio? curious what you thought of the battle screen style",
+    "day7": "last follow-up from me — if the timing isn't right now, no worries at all. i'm usually booked 1-2 weeks out so just let me know if you want to plan something",
+    "afterNoReply": "totally fine if this isn't a fit! if you ever need game UI work in the future, i'm at [EMAIL]. good luck with the game 🙏"
+  },
+  "platformPlaybook": {
+    "reddit": {
+      "bestSubreddits": ["r/gamedev", "r/indiegaming", "r/indiegamedev", "r/unrealengine", "r/unity3d", "r/godot"],
+      "bestPosts": "Look for: 'rate my game', 'feedback request', 'my first game', WIP screenshots with placeholder UI",
+      "rule": "Comment publicly first, offer value, then DM only if they engage"
+    },
+    "twitter": {
+      "searches": ["#indiedev UI help", "#gamedev need designer", "game UI feedback", "indie game WIP"],
+      "timing": "Tuesday-Thursday, 9am-12pm EST gets most engagement"
+    },
+    "upwork": {
+      "searchTerms": ["mobile game UI", "game interface design", "HTML5 game UI", "unity UI developer"],
+      "proposalTip": "Apply within 1 hour of job posting for 3x higher response rate"
+    },
+    "fiverr": {
+      "gigTitle": "I will design a stunning mobile game UI in HTML CSS JS",
+      "tags": ["mobile game UI", "game interface", "anime game UI", "HTML5 game", "game HUD design"]
+    }
+  }
+}
